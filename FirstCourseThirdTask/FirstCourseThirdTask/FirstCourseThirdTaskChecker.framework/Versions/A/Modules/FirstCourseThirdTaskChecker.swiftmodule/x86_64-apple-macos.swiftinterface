@@ -1,0 +1,48 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2 effective-4.1.50 (swiftlang-1103.0.32.1 clang-1103.0.32.29)
+// swift-module-flags: -target x86_64-apple-macos10.10 -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name FirstCourseThirdTaskChecker
+@_exported import FirstCourseThirdTaskChecker
+import Foundation
+import Swift
+open class AbstractStorage {
+  open var count: Swift.Int {
+    get
+  }
+  required public init()
+  open func push(_ element: Swift.Int)
+  open func pop() -> Swift.Int
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class ArrayInitializableStorage : FirstCourseThirdTaskChecker.AbstractStorage {
+  required public init(array: [Swift.Int])
+  required public init()
+  @objc deinit
+}
+public protocol StorageProtocol {
+  var count: Swift.Int { get }
+  init()
+  mutating func push(_ element: Swift.Int)
+  mutating func pop() -> Swift.Int
+}
+public protocol ArrayInitializable {
+  init(array: [Swift.Int])
+}
+@_hasMissingDesignatedInitializers final public class User {
+  final public var fullName: Swift.String
+  final public var email: Swift.String
+  public init()
+  @objc deinit
+}
+public protocol JSONSerializable : AnyObject {
+  func toJSON() -> Swift.String
+}
+public protocol JSONInitializable : AnyObject {
+  init(JSON: Swift.String)
+}
+public class Checker {
+  public init()
+  public func checkInheritance(stack: FirstCourseThirdTaskChecker.ArrayInitializableStorage, queue: FirstCourseThirdTaskChecker.ArrayInitializableStorage)
+  public func checkProtocols(stack: FirstCourseThirdTaskChecker.ArrayInitializable & FirstCourseThirdTaskChecker.StorageProtocol, queue: FirstCourseThirdTaskChecker.ArrayInitializable & FirstCourseThirdTaskChecker.StorageProtocol)
+  public func checkExtensions(userType: (FirstCourseThirdTaskChecker.User & FirstCourseThirdTaskChecker.JSONInitializable & FirstCourseThirdTaskChecker.JSONSerializable).Type)
+  @objc deinit
+}
